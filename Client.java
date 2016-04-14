@@ -22,7 +22,7 @@ class Client {
     try {
       
 	    socket = new Socket("localhost",62400);
-      System.out.print("Connected.\n");
+      System.out.print("\nConnected.\n\n");
 
 	    while(true) {
 
@@ -38,7 +38,7 @@ class Client {
           recv = bytesRead.readLine();
 
           if(recv.equals("close")) {
-            System.out.print("Wrong password. Exiting now!\n");
+            System.out.print("\nWrong password. Exiting now!\n\n");
             System.exit(0);
           }
           else {
@@ -53,7 +53,7 @@ class Client {
           bytesWritten.println(sendTo);
 
           recv = bytesRead.readLine();
-          System.out.println("SERVER: " + recv);
+          System.out.println("Server: " + recv);
         }
 
       }

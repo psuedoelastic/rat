@@ -44,7 +44,7 @@ class Server {
           recv = bytesRead.readLine();
 
           if(!(passwd(recv))) {
-            System.out.print("Wrong password. Exiting now!\n");
+            System.out.print("\nWrong password. Exiting now!\n\n");
             bytesWritten.println("close");
             System.exit(0);
           }
@@ -58,21 +58,16 @@ class Server {
           recv = bytesRead.readLine();
 
           if(recv.equals(location)) {
-            System.out.print("Location sent.\n");
+            System.out.print("\nLocation sent.\n\n");
           }
           else if(recv.equals(quit)) {
-            System.out.print("Client manually closed connection.\n");
+            System.out.print("\nClient manually closed connection.\n\n");
             System.exit(0);
           }
           else {
-            System.out.println("CLIENT: " + recv);
+            bytesWritten = new PrintWriter(clientSocket.getOutputStream(),true);
+            bytesWritten.println(recv);
           }
-
-          bytesWritten = new PrintWriter(clientSocket.getOutputStream(),true);
-          System.out.print("Message: ");
-          user_input = new Scanner(System.in);
-          sendTo = user_input.next();
-          bytesWritten.println(sendTo);
 
         }
 
